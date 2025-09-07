@@ -38,8 +38,7 @@ def after_step(context, step):
 def after_scenario(context, scenario):
     if scenario.status == "failed":
         _save_screenshot(context, f"scenario_{scenario.name}")
-        context.driver.quit()
-        
+
 def _save_screenshot(context, name):
     screenshots_dir = os.path.join("reports", "screenshots")
     os.makedirs(screenshots_dir, exist_ok=True)
@@ -47,4 +46,3 @@ def _save_screenshot(context, name):
         filename = f"{name.replace(' ', '_')}.png"
         path = os.path.join(screenshots_dir, filename)
         context.browser.save_screenshot(path)
-    
