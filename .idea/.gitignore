@@ -1,3 +1,10 @@
-# Default ignored files
-/shelf/
-/workspace.xml
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Reports
+/reports/
+
+# Virtual environment
+venv/
+.env
