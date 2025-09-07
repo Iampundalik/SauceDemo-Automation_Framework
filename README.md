@@ -48,7 +48,7 @@ set EXPLICIT_WAIT=10
 py -m behave
 ```
 
-> **Screenshots** on failure are saved in `screenshots/` named by scenario + timestamp.
+> **Screenshots** on failure are saved in `reports/screenshots/` named by scenario + timestamp.
 
 ---
 
