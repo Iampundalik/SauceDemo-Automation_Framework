@@ -1,14 +1,17 @@
-name: CI
+name: build-and-test
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
+  pull_request:
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -23,10 +26,12 @@ jobs:
 
       - name: Run Behave tests
         run: |
-         python -m behave -f pretty -f behave_html_formatter:HTMLFormatter -o reports/report.html -f json.pretty -o reports/report.json
+          python -m behave -f behave_html_formatter:HTMLFormatter -o reports/report.html
 
-      - name: Archive reports
+      - name: Upload artifact (HTML report + screenshots)
         uses: actions/upload-artifact@v4
         with:
           name: behave-reports
-          path: reports/
+          path: |
+            reports/report.html
+            reports/screenshots/
