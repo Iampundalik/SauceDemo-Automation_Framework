@@ -70,12 +70,12 @@ SauceDemo-Automation_Framework/
 │   │   ├── login_steps.py
 │   │   ├── cart_steps.py
 │   │   ├── sorting_steps.py
-│   ├── environment.py
+│   └── environment.py
 ├── reports/
 │   ├── report.html
-│   └── report.json
+│   └── screenshots/
+│       └── (screenshot files)
 ├── utils/
-│   ├── logger.py
 │   └── (other utility modules)
 ├── requirements.txt
 └── README.md
@@ -109,4 +109,4 @@ SauceDemo-Automation_Framework/
 - **Centralized Hooks:** Driver, logging, screenshots in `environment.py`
 - **Explicit Waits:** Stable on dynamic pages
 - **Environment-driven Config:** For local and CI runs
-- **Stable Selectors:** Uses `data-test` attributes where possible
+- **Stable Locators:** Uses `data-test` attributes where possible
