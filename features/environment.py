@@ -5,10 +5,10 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from utils import config
-from utils.logger import get_logger
 
 def before_all(context):
-    context.logger = get_logger('behave')
+    screenshots_dir = os.path.join("reports", "screenshots")
+    os.makedirs(screenshots_dir, exist_ok=True)
 
 def before_scenario(context, scenario):
     chrome_options = Options()
@@ -32,12 +32,19 @@ def before_scenario(context, scenario):
     context.driver.implicitly_wait(config.IMPLICIT_WAIT)
 
 def after_step(context, step):
-    if step.status == 'failed':
-        ts = time.strftime('%Y%m%d_%H%M%S')
-        name = f"{step.name[:40].replace(' ', '_')}_{ts}.png"
-        fp = os.path.join('screenshots', name)
-        context.driver.save_screenshot(fp)
-        context.logger.info(f"Saved screenshot: {fp}")
+    if step.status == "failed":
+        _save_screenshot(context, f"step_{step.name}")
 
 def after_scenario(context, scenario):
-    context.driver.quit()
+    if scenario.status == "failed":
+        _save_screenshot(context, f"scenario_{scenario.name}")
+        context.driver.quit()
+        
+def _save_screenshot(context, name):
+    screenshots_dir = os.path.join("reports", "screenshots")
+    os.makedirs(screenshots_dir, exist_ok=True)
+    if hasattr(context, "browser"):
+        filename = f"{name.replace(' ', '_')}.png"
+        path = os.path.join(screenshots_dir, filename)
+        context.browser.save_screenshot(path)
+    
