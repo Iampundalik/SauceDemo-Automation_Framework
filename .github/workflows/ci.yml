@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Behave tests
         run: |
-          python -m behave -f pretty -f html -o reports/report.html -f json.pretty -o reports/report.json
+         python -m behave -f pretty -f behave_html_formatter:HTMLFormatter -o reports/report.html -f json.pretty -o reports/report.json
 
       - name: Archive reports
         uses: actions/upload-artifact@v4
