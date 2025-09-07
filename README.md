@@ -56,9 +56,9 @@ py -m behave
 
 ```
 SauceDemo-Automation_Framework/
-├── behave.ini
-├── requirements.txt
-├── README.md
+├── .github/
+│   └── workflows/
+│       └── ci.yml
 ├── features/
 │   ├── saucedemo_login.feature
 │   ├── saucedemo_cart.feature
@@ -69,20 +69,16 @@ SauceDemo-Automation_Framework/
 │   │   ├── common_steps.py
 │   │   ├── login_steps.py
 │   │   ├── cart_steps.py
-│   │   └── sorting_steps.py
-│   └── environment.py
-├── pages/
-│   ├── base_page.py
-│   ├── login_page.py
-│   ├── inventory_page.py
-│   ├── cart_page.py
-│   └── checkout_page.py
-├── utils/
-│   ├── config.py
-│   ├── helpers.py
-│   └── logger.py
+│   │   ├── sorting_steps.py
+│   ├── environment.py
 ├── reports/
-└── screenshots/```
+│   ├── report.html
+│   └── report.json
+├── utils/
+│   ├── logger.py
+│   └── (other utility modules)
+├── requirements.txt
+└── README.md
 
 ---
 
