@@ -14,6 +14,7 @@ def before_scenario(context, scenario):
     chrome_options = Options()
     prefs = {
         "credentials_enable_service": False,
+    
         "profile.password_manager_enabled": False,
         "profile.password_manager_leak_detection": False,
         "profile.default_content_setting_values.notifications": 2
